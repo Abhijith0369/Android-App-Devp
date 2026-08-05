@@ -1,45 +1,40 @@
-package com.google.myapp;
-
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
+package com.example.lifecycle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+import android.os.Bundle;
+import android.util.Log;
 
-    EditText etUsername, etPassword;
-    Button btnLogin;
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        etUsername = findViewById(R.id.etUsername);
-        etPassword = findViewById(R.id.etPassword);
-        btnLogin = findViewById(R.id.btnLogin);
-
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                String username = etUsername.getText().toString();
-                String password = etPassword.getText().toString();
-
-                if (username.equals("admin") && password.equals("1234")) {
-                    Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-
-                    // Example:
-                    // Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                    // startActivity(intent);
-
-                } else {
-                    Toast.makeText(MainActivity.this, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        Log.d("Lifecycle", "onCreate invoked");
+    }
+    protected void onStart() {
+        super.onStart();
+        Log.d("Lifecycle", "onStart invoked");
+    }
+    protected void onResume() {
+        super.onResume();
+        Log.d("Lifecycle", "onResume invoked");
+    }
+    protected void onPause() {
+        super.onPause();
+        Log.d("Lifecycle", "onPause invoked");
+    }
+    protected void onStop() {
+        super.onStop();
+        Log.d("Lifecycle", "onStop invoked");
+    }
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("Lifecycle", "onRestart invoked");
+    }
+    protected void onDestroy(){
+        super.onDestroy();
+        Log.d("Lifecycle","onDestroy invoked");
     }
 }
